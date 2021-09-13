@@ -46,5 +46,11 @@ RSpec.describe 'the mechanics show page' do
       expect(current_path).to eq("/mechanics/#{@speed.id}")
       expect(page).to have_content('The Great Bear')
     end
+
+    it 'returns an error if the ride id does not exist' do
+      fill_in('ride_id', with: 1)
+      click_button('Add ride by id')
+      save_and_open_page
+    end
   end
 end
